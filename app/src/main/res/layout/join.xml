@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#abcdef"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="회원가입"
+        android:textColor="#FFFFFF"
+        android:textSize="32dp" />
+
+    <EditText
+        android:id="@+id/id"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:hint="아이디"
+        android:singleLine="true"
+        android:textColorHint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/pa"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/id"
+        android:layout_centerHorizontal="true"
+        android:hint="비밀번호"
+        android:singleLine="true"
+        android:textColorHint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/pa"
+        android:layout_centerHorizontal="true"
+        android:hint="이름"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColorHint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/name"
+        android:layout_centerHorizontal="true"
+        android:hint="나이"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColorHint="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/age"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/profile" />
+
+    <Button
+        android:id="@+id/imgbt"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img1"
+        android:layout_centerHorizontal="true"
+        android:text="사진 설정"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/signbt"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/imgbt"
+        android:layout_marginTop="20dp"
+        android:layout_toStartOf="@+id/back"
+        android:onClick="su"
+        android:text="회원가입"
+        android:textColor="#FFFFFF"/>
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_alignEnd="@id/age"
+        android:layout_alignTop="@id/signbt"
+        android:text="취소"
+        android:textColor="#FFFFFF"/>
+        android:textAllCaps="false" />
+</RelativeLayout>
