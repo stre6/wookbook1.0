@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#abcdef"
+    android:background="#3552b1"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="회원가입"
+        android:text="욱북가입"
         android:textColor="#FFFFFF"
         android:textSize="32dp" />
 
@@ -21,6 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:hint="아이디"
+        android:textColor="#FFFFFF"
         android:singleLine="true"
         android:textColorHint="#FFFFFF" />
 
@@ -31,6 +32,7 @@
         android:layout_below="@id/id"
         android:layout_centerHorizontal="true"
         android:hint="비밀번호"
+        android:textColor="#FFFFFF"
         android:singleLine="true"
         android:textColorHint="#FFFFFF" />
 
@@ -41,6 +43,7 @@
         android:layout_below="@id/pa"
         android:layout_centerHorizontal="true"
         android:hint="이름"
+        android:textColor="#FFFFFF"
         android:inputType="text"
         android:singleLine="true"
         android:textColorHint="#FFFFFF" />
@@ -52,6 +55,7 @@
         android:layout_below="@id/name"
         android:layout_centerHorizontal="true"
         android:hint="나이"
+        android:textColor="#FFFFFF"
         android:inputType="number"
         android:maxLength="2"
         android:textColorHint="#FFFFFF" />
@@ -71,6 +75,7 @@
         android:layout_below="@+id/img1"
         android:layout_centerHorizontal="true"
         android:text="사진 설정"
+        android:background="#385bc2"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"/>
 
@@ -83,8 +88,8 @@
         android:layout_toStartOf="@+id/back"
         android:onClick="su"
         android:text="회원가입"
-        android:textColor="#FFFFFF"/>
-        android:textAllCaps="false" />
+        android:background="#385bc2"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/back"
@@ -93,6 +98,6 @@
         android:layout_alignEnd="@id/age"
         android:layout_alignTop="@id/signbt"
         android:text="취소"
-        android:textColor="#FFFFFF"/>
-        android:textAllCaps="false" />
+        android:background="#385bc2"
+        android:textColor="#FFFFFF" />
 </RelativeLayout>

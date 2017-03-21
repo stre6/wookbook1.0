@@ -32,9 +32,8 @@ public class Tabone extends Fragment {
         date = new ArrayList<>();
         adapter = new Cadapter(date);
         rv.setAdapter(adapter);
-        date.add(new MyData("#InsideOut", "asd", "asd", "asd", "asd", R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
+        date.add(new MyData("제목", "날짜", "내용 약간", "좋아요", "댓글", R.mipmap.ic_launcher/*프로필*/, R.mipmap.ic_launcher, R.mipmap.ic_launcher/*본사진*/, R.mipmap.ic_launcher/*좋아요*/));
 
         return view;
     }
-
 }

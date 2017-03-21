@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#abcdef">
+    android:background="#3552b1">
     <TextView
         android:layout_marginTop="150dp"
         android:layout_width="300dp"
         android:layout_height="55dp"
-        android:text="욱북가입"
+        android:text="욱북"
         android:gravity="center"
         android:textSize="30dp"
         android:id="@+id/ga"
@@ -21,6 +21,7 @@
         android:layout_below="@+id/ga"
         android:id="@+id/Id"
         android:singleLine="true"
+        android:textColor="#FFFFFF"
         android:textColorHint="#ffffff"
         android:inputType="text"/>
     <EditText
@@ -30,6 +31,7 @@
         android:id="@+id/pw"
         android:hint="PW"
         android:singleLine="true"
+        android:textColor="#FFFFFF"
         android:textColorHint="#ffffff"
         android:layout_below="@+id/Id"/>
     <Button
@@ -39,6 +41,7 @@
         android:id="@+id/login"
         android:onClick="login"
         android:textAllCaps="false"
+        android:background="#385bc2"
         android:layout_marginTop="20dp"
         android:layout_below="@id/pw"
         android:textColor="#FFFFFF"
@@ -47,6 +50,7 @@
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:text="회원가입"
+        android:background="#385bc2"
         android:id="@+id/sign"
         android:textColor="#FFFFFF"
         android:textAllCaps="false"
@@ -58,6 +62,7 @@
         android:text="자동 로그인"
         android:id="@+id/autologin"
         android:textColor="#FFFFFF"
+        android:background="#385bc2"
         android:textAllCaps="false"
         android:layout_below="@+id/login"
         android:layout_alignStart="@+id/login" />
@@ -66,8 +71,9 @@
         android:id="@+id/autostop"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:text="자동 해제"
+        android:text="자동 로그인 해제"
         android:textAllCaps="false"
+        android:background="#385bc2"
         android:textColor="#FFFFFF"
         android:layout_below="@+id/sign"
         android:layout_toEndOf="@+id/login" />

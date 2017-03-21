@@ -27,6 +27,7 @@ public class Lc extends AppCompatActivity {
     ArrayList Name = new ArrayList();
     String cid, cpw, cname;
     int k;
+    String newid;
 
     public String gets() {
         return res;
@@ -72,9 +73,6 @@ public class Lc extends AppCompatActivity {
     String lcheck(String j) {
 
         try {
-            Id.clear();
-            Pw.clear();
-            Name.clear();
             JSONArray a = new JSONArray(j);
             for (int i = 0; i < a.length(); i++) {
                 JSONObject o = a.getJSONObject(i);
@@ -90,6 +88,7 @@ public class Lc extends AppCompatActivity {
         for (k = 0; k < Id.size(); k++) {
             if (id.equals(Id.get(k).toString().trim()) && pw.equals(Pw.get(k).toString().trim())) {
                 res = "Su";
+                newid = Name.get(k).toString().trim();
                 break;
             } else {
                 res = "fail";

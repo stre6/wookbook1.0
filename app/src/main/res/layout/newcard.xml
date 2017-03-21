@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</LinearLayout>
+    android:layout_height="match_parent"
+    android:background="#385bc2">
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp"
+        android:text="욱북글쓰기"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="15dp"/>
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="70dp"
+        android:hint="제목"
+        android:inputType="text"
+        android:background="#3552b1"
+        android:textColorHint="#b9b0b0"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/newed" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:background="#3552b1"
+        android:textColorHint="#b9b0b0"
+        android:textColor="#FFFFFF"
+        android:inputType="text"
+        android:hint="내용"
+        android:layout_below="@+id/newed"
+        android:layout_alignStart="@+id/newed"
+        android:layout_marginTop="47dp"
+        android:id="@+id/newed2" />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/newed2"
+        android:layout_alignStart="@+id/newed2"
+        android:layout_marginTop="10dp"
+        android:background="#3552b1"
+        android:textColor="#FFFFFF"
+        android:text="글쓰기"
+        android:gravity="center"
+        android:id="@+id/newbt1"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/newbt1"
+        android:layout_toEndOf="@+id/newbt1"
+        android:layout_marginTop="10dp"
+        android:background="#3552b1"
+        android:textColor="#FFFFFF"
+        android:text="취소"
+        android:id="@+id/newbt2"
+        android:gravity="center"/>
+</RelativeLayout>

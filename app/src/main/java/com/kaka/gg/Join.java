@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by stre6 on 2017-03-07.
@@ -35,9 +38,12 @@ import java.net.URLEncoder;
 public class Join extends AppCompatActivity {
     Button sighbt, back, imgplus;
     EditText id, pa, name, age;
-    String res, absoultePath;
+    String res, absoultePath, times;
     ImageView img;
     Uri imguri;
+    long now = System.currentTimeMillis();
+    Date date = new Date(now);
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final int PICK_FROM_CAMERA = 0;
     private static final int PICK_FROM_ALBUM = 1;
     private static final int CROP_FROM_IMAGE = 2;
@@ -79,6 +85,7 @@ public class Join extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(Join.this, "회원가입 취소", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -143,15 +150,17 @@ public class Join extends AppCompatActivity {
 
     public void TakePhoto() {
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        String url = "tmp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
-        imguri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), url));
-        i.putExtra(MediaStore.EXTRA_OUTPUT, imguri);
+        format.format(date);
+        String url = "camera_" + date + ".jpg";
+        imguri = Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/Picture/", url));
+        i.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, imguri);
         startActivityForResult(i, PICK_FROM_CAMERA);
     }
 
     public void TakeAlbum() {
         Intent i = new Intent(Intent.ACTION_PICK);
-        i.setType(MediaStore.Images.Media.CONTENT_TYPE);
+        i.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
+        i.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, PICK_FROM_ALBUM);
     }
 
@@ -159,39 +168,36 @@ public class Join extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode != RESULT_OK){
-         return;
-        }
+        if (resultCode != RESULT_OK)
+            return;
 
-        switch (requestCode){
-            case PICK_FROM_ALBUM:
-            {
+        switch (requestCode) {
+            case PICK_FROM_ALBUM: {
                 imguri = data.getData();
-
+                Log.e("Picture", imguri.getPath().toString());
             }
-            case  PICK_FROM_CAMERA:
-            {
+            case PICK_FROM_CAMERA: {
                 Intent i = new Intent("com.android.camera.action.CROP");
                 i.setDataAndType(imguri, "image/*");
 
-                i.putExtra("outputX",80);
-                i.putExtra("outputY",80);
-                i.putExtra("aspectX",1);
-                i.putExtra("aspectY",1);
-                i.putExtra("scale",true);
-                i.putExtra("return-data",true);
-                startActivityForResult(i,CROP_FROM_IMAGE);
+                i.putExtra("outputX", 80);
+                i.putExtra("outputY", 80);
+                i.putExtra("aspectX", 1);
+                i.putExtra("aspectY", 1);
+                i.putExtra("scale", true);
+                i.putExtra("return-data", true);
+                startActivityForResult(i, CROP_FROM_IMAGE);
 
                 break;
             }
-            case CROP_FROM_IMAGE:
-            {
-                if (resultCode != RESULT_OK){
+            case CROP_FROM_IMAGE: {
+                if (resultCode != RESULT_OK) {
                     return;
                 }
                 final Bundle extras = data.getExtras();
-                String filePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/imgcrop/"+System.currentTimeMillis()+".jpg";
-                if (extras !=null){
+                format.format(now);
+                String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Picture/" + "Album_9" + date + ".jpg";
+                if (extras != null) {
                     Bitmap photo = extras.getParcelable("data");
                     img.setImageBitmap(photo);
                     storeCropImage(photo, filePath);
@@ -199,30 +205,31 @@ public class Join extends AppCompatActivity {
                     break;
                 }
                 File f = new File(imguri.getPath());
-                if (f.exists()){
+                if (f.exists()) {
                     f.delete();
                 }
             }
         }
     }
-    public void storeCropImage(Bitmap bitmap, String filePath){
-        String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/imgcrop/";
-        File directory_imgcrop = new File(dirPath);
-        if (!directory_imgcrop.exists()){
-            directory_imgcrop.mkdir();
-            File copyFile = new File(filePath);
-            BufferedOutputStream out = null;
-            try{
-                copyFile.createNewFile();
-                out = new BufferedOutputStream(new FileOutputStream(copyFile));
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,out);
-                sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                        Uri.fromFile(copyFile)));
-                out.flush();
-                out.close();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+
+    public void storeCropImage(Bitmap bitmap, String filePath) {
+        String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Picture/";
+        File directory_Picture = new File(dirPath);
+        if (!directory_Picture.exists())
+            directory_Picture.mkdir();
+        File copyFile = new File(filePath);
+        BufferedOutputStream out = null;
+        try {
+            copyFile.createNewFile();
+            out = new BufferedOutputStream(new FileOutputStream(copyFile));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+                    Uri.fromFile(copyFile)));
+
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
