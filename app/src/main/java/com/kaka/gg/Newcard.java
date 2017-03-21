@@ -109,4 +109,5 @@ public class Newcard extends AppCompatActivity {
         Card task = new Card();
         task.execute(writer, title, content, regist_day);
     }
+
 }

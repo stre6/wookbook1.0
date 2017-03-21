@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("아우~디");
         Intent a = getIntent();
         name = a.getStringExtra("newid");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

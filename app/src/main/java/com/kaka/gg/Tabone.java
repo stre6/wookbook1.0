@@ -20,7 +20,7 @@ public class Tabone extends Fragment {
     RecyclerView rv;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager lm;
-    private ArrayList<MyData> date;
+    ArrayList<MyData> date;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,8 +32,7 @@ public class Tabone extends Fragment {
         date = new ArrayList<>();
         adapter = new Cadapter(date);
         rv.setAdapter(adapter);
-        date.add(new MyData("제목", "날짜", "내용 약간", "좋아요", "댓글", R.mipmap.ic_launcher/*프로필*/, R.mipmap.ic_launcher, R.mipmap.ic_launcher/*본사진*/, R.mipmap.ic_launcher/*좋아요*/));
-
+        date.add(new MyData("제목", "날짜", "내용 약간", 0 + " 개", "댓글", R.mipmap.ic_launcher/*프로필*/, "작성자", R.mipmap.like, R.mipmap.ic_launcher/*본사진*/));
         return view;
     }
 }

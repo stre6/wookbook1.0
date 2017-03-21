@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,20 +18,23 @@ public class Cadapter extends RecyclerView.Adapter<Cadapter.ViewHolder> {
     ArrayList<MyData> mDataset;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv, iv2, ivi, iv3;
-        TextView tv_title, tv_date, tv_content, tv_count, tv_writer;
+        ImageView iv,ivi;
+        ImageButton iv3;
+        TextView tv_title, tv_date, tv_content, tv_count, tv_writer,iv2;
 
         public ViewHolder(View v) {
             super(v);
             iv = (ImageView) v.findViewById(R.id.imageView);
-            iv2 = (ImageView) v.findViewById(R.id.imageView2);
+            iv2 = (TextView) v.findViewById(R.id.imageView2);
             ivi = (ImageView) v.findViewById(R.id.iv_image);
-            iv3 = (ImageView) v.findViewById(R.id.imageView3);
+            iv3 = (ImageButton) v.findViewById(R.id.imageView3);
             tv_title = (TextView) v.findViewById(R.id.tv_title);
             tv_date = (TextView) v.findViewById(R.id.tv_date);
             tv_content = (TextView) v.findViewById(R.id.tv_content);
             tv_count = (TextView) v.findViewById(R.id.tv_count);
             tv_writer = (TextView) v.findViewById(R.id.tv_writer);
+
+
         }
     }
 
@@ -53,7 +57,7 @@ public class Cadapter extends RecyclerView.Adapter<Cadapter.ViewHolder> {
         holder.tv_writer.setText(mDataset.get(position).writer);
         holder.tv_count.setText(mDataset.get(position).count);
         holder.iv.setImageResource(mDataset.get(position).imv);
-        holder.iv2.setImageResource(mDataset.get(position).imv2);
+        holder.iv2.setText(mDataset.get(position).imv2);
         holder.iv3.setImageResource(mDataset.get(position).imv3);
         holder.ivi.setImageResource(mDataset.get(position).imvi);
     }
@@ -66,10 +70,10 @@ public class Cadapter extends RecyclerView.Adapter<Cadapter.ViewHolder> {
 
 
 class MyData {
-    String title, date, content, count, writer;
-    int imv, imv2, imv3, imvi;
+    String title, date, content, count, writer,imv2;
+    int imv,imv3, imvi;
 
-    public MyData(String title, String date, String content, String count, String writer, int imv, int imv2, int imv3, int ivi) {
+    public MyData(String title, String date, String content, String count, String writer, int imv, String imv2, int imv3, int ivi) {
         this.title = title;
         this.date = date;
         this.content = content;
